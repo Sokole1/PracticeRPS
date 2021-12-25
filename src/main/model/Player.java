@@ -10,14 +10,14 @@ public class Player {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getScore() {
-        return score;
+        return this.score;
     }
 
     public int increaseScore() {
-        return score++;
+        return this.score++;
     }
 }
