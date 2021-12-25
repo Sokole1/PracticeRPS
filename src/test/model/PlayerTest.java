@@ -6,23 +6,27 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
+    Player player;
     @BeforeEach
     public void runBefore() {
-        Player player = new Player("Player");
+        player = new Player("Player");
     }
 
     @Test
     public void testIncreaseScore() {
-        Assertions.assertEquals(1, Player.increaseScore(0));
+        player.increaseScore();
+        Assertions.assertEquals(1, player.getScore());
+        player.increaseScore();
+        Assertions.assertEquals(2, player.getScore());
     }
 
     @Test
     public void testGetName() {
-        Assertions.assertEquals("Player", Player.getName());
+        Assertions.assertEquals("Player", player.getName());
     }
 
     @Test
     public void testGetScore() {
-        Assertions.assertEquals(0, Player.getScore());
+        Assertions.assertEquals(0, player.getScore());
     }
 }
