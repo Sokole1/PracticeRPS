@@ -8,4 +8,9 @@ public class Game {
         return player.getScore() >= maxScore;
     }
 
+    // private -> public
+    public boolean isTie(RPSEnum p1, RPSEnum p2) {
+        return p1 == p2;
+    }
+
 }
