@@ -25,33 +25,21 @@ public class GameTest {
 
         player2 = new Player("player2");
         Assertions.assertFalse(game.hasWon(player2));
-
     }
 
     @Test
     public void testIsTieTrue() {
-        player1 = new Player("player1");
-        player2 = new Player("player2");
-
         Assertions.assertTrue(game.isTie(RPSEnum.ROCK, RPSEnum.ROCK));
         Assertions.assertTrue(game.isTie(RPSEnum.SCISSORS, RPSEnum.SCISSORS));
         Assertions.assertTrue(game.isTie(RPSEnum.PAPER, RPSEnum.PAPER));
-
-
     }
 
     @Test
     public void testIsTieFalse() {
-        player1 = new Player("player1");
-        player2 = new Player("player2");
-
         Assertions.assertFalse(game.isTie(RPSEnum.SCISSORS, RPSEnum.ROCK));
         Assertions.assertFalse(game.isTie(RPSEnum.PAPER, RPSEnum.SCISSORS));
         Assertions.assertFalse(game.isTie(RPSEnum.ROCK, RPSEnum.PAPER));
-
-
     }
-
 
     @Test
     public void testBeatsOtherWin() {
