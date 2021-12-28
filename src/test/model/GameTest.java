@@ -52,6 +52,7 @@ public class GameTest {
 
     }
 
+
     @Test
     public void testBeatsOtherWin() {
         Assertions.assertEquals(true, game.beatsOther(RPSEnum.ROCK, RPSEnum.SCISSORS));
