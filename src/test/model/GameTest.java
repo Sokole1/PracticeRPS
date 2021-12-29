@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
-    Game game;
-    Player player1;
-    Player player2;
+
+    private Game game;
+    private Player player1, player2;
 
     @BeforeEach
     public void runBefore() {
@@ -43,15 +43,15 @@ public class GameTest {
 
     @Test
     public void testBeatsOtherWin() {
-        Assertions.assertEquals(true, game.beatsOther(RPSEnum.ROCK, RPSEnum.SCISSORS));
-        Assertions.assertEquals(true, game.beatsOther(RPSEnum.PAPER, RPSEnum.ROCK));
-        Assertions.assertEquals(true, game.beatsOther(RPSEnum.SCISSORS, RPSEnum.PAPER));
+        Assertions.assertTrue(game.beatsOther(RPSEnum.ROCK, RPSEnum.SCISSORS));
+        Assertions.assertTrue(game.beatsOther(RPSEnum.PAPER, RPSEnum.ROCK));
+        Assertions.assertTrue(game.beatsOther(RPSEnum.SCISSORS, RPSEnum.PAPER));
     }
 
     @Test
     public void testBeatsOtherLose() {
-        Assertions.assertEquals(false, game.beatsOther(RPSEnum.ROCK, RPSEnum.PAPER));
-        Assertions.assertEquals(false, game.beatsOther(RPSEnum.PAPER, RPSEnum.SCISSORS));
-        Assertions.assertEquals(false, game.beatsOther(RPSEnum.SCISSORS, RPSEnum.ROCK));
+        Assertions.assertFalse(game.beatsOther(RPSEnum.ROCK, RPSEnum.PAPER));
+        Assertions.assertFalse(game.beatsOther(RPSEnum.PAPER, RPSEnum.SCISSORS));
+        Assertions.assertFalse(game.beatsOther(RPSEnum.SCISSORS, RPSEnum.ROCK));
     }
 }
