@@ -1,6 +1,9 @@
 package main.model;
 
 public class Game {
+
+    private int maxScore = 1;
+
     public boolean beatsOther(RPSEnum p, RPSEnum c) {
         if (p == RPSEnum.ROCK && c == RPSEnum.SCISSORS) {
             return true;
@@ -12,7 +15,6 @@ public class Game {
             return false;
         }
     }
-    private int maxScore = 1;
 
     public boolean hasWon(Player player) {
         return player.getScore() >= maxScore;

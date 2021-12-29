@@ -2,7 +2,7 @@ package main.model;
 
 public class Player {
 
-    private final String name;
+    private String name;
     private int score = 0;
 
     public Player(String name) {
@@ -17,7 +17,7 @@ public class Player {
         return this.score;
     }
 
-    public int increaseScore() {
-        return this.score++;
+    public void increaseScore() {
+        this.score++;
     }
 }
