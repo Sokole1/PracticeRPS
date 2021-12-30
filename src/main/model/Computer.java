@@ -13,7 +13,7 @@ public class Computer extends Player {
         this.random = new Random();
         this.choices = choices;
     }
-
+    // EFFECTS: Make a random choice out of the options
     public RPSEnum makeChoice() {
         return choices[random.nextInt(choices.length)];
     }
