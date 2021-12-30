@@ -77,4 +77,28 @@ public class GameTest {
         Assertions.assertEquals(game.getPlayer(), winner);
     }
 
+    @Test
+    public void testNoOneWonPlayerWinsRound() {
+        player1.setScore(game.getMaxScore() - 2);
+
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+
+        Assertions.assertNull(game.play(RPSEnum.PAPER));
+        Assertions.assertEquals(initialPlayerScore + 1, player1.getScore());
+        Assertions.assertEquals(initialComputerScore, game.getComputer().getScore());
+    }
+
+    @Test
+    public void testNoOneWonComputerWinsRound() {
+        player1.setScore(game.getMaxScore() - 2);
+
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+
+
+        Assertions.assertNull(game.play(RPSEnum.SCISSORS));
+        Assertions.assertEquals(initialPlayerScore, player1.getScore());
+        Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
+    }
 }
