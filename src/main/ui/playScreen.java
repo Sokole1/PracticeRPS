@@ -93,19 +93,23 @@ public class playScreen extends Application {
     private void handlePlay(RPSEnum choice) {
         Player winner = game.play(choice);
         if (winner != null) {
+            resetText(playerScore, game, computerScore);
             boolean playAgain = GameOverPopUp.display(winner.getName());
             if (playAgain) {
                 setUpGame();
-                primaryStage.getScene().getWindow().setWidth(primaryStage.getScene().getWidth() + 0.001);
+                resetText(playerScore, game, computerScore);
             } else {
                 primaryStage.close();
             }
         } else {
-            playerScore = new Label("Player: " + game.getPlayer().getScore());
-            computerScore = new Label("Computer: " + game.getComputer().getScore());
+            resetText(playerScore, game, computerScore);
             System.out.println(game);
-            primaryStage.getScene().getWindow().setWidth(primaryStage.getScene().getWidth() + 0.001);
         }
+    }
+
+    private void resetText(Label playerScore, Game game, Label computerScore) {
+        playerScore.setText("Player: " + game.getPlayer().getScore());
+        computerScore.setText("Computer: " + game.getComputer().getScore());
     }
 
     // MODIFIES: this
@@ -114,6 +118,7 @@ public class playScreen extends Application {
         Player player1 = new Player("You");
         Computer computer = new Computer("CPU", new RPSEnum[]{RPSEnum.ROCK, RPSEnum.PAPER, RPSEnum.SCISSORS});
         game = new Game(player1, computer);
+
     }
 
 }
