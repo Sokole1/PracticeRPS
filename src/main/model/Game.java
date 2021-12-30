@@ -2,13 +2,17 @@ package main.model;
 
 public class Game {
 
-    private int maxScore = 1;
+    private int maxScore = 5;
     private Player player;
     private Computer computer;
 
     public Game(Player player, Computer computer) {
         this.player = player;
         this.computer = computer;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
     }
 
     public boolean beatsOther(RPSEnum p, RPSEnum c) {
@@ -30,5 +34,10 @@ public class Game {
     // private -> public
     public boolean isTie(RPSEnum p1, RPSEnum p2) {
         return p1 == p2;
+    }
+
+    // EFFECTS: computer makes a move makeChoice(), checks who wins beatsOther(), else isTie(), increment score of winner computer/player.increaseScore(), return winner or null if no one won yet
+    public Player play(RPSEnum move) {
+        return new Player("donelsfd");
     }
 }
