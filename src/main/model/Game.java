@@ -3,6 +3,13 @@ package main.model;
 public class Game {
 
     private int maxScore = 1;
+    private Player player;
+    private Computer computer;
+
+    public Game(Player player, Computer computer) {
+        this.player = player;
+        this.computer = computer;
+    }
 
     public boolean beatsOther(RPSEnum p, RPSEnum c) {
         if (p == RPSEnum.ROCK && c == RPSEnum.SCISSORS) {
