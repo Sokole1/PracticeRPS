@@ -13,7 +13,7 @@ public class ComputerTest {
 
     @BeforeEach
     public void runBefore() {
-        computer = new Computer("Computer");
+        computer = new Computer("Computer", new RPSEnum[]{RPSEnum.ROCK});
     }
 
     @Test
@@ -28,7 +28,6 @@ public class ComputerTest {
 
     @Test
     public void testMakeChoice() {
-        computer.makeChoice(new RPSEnum[]{RPSEnum.ROCK});
-        Assertions.assertEquals(RPSEnum.ROCK, computer.makeChoice(new RPSEnum[]{RPSEnum.ROCK}));
+        Assertions.assertEquals(RPSEnum.ROCK, computer.makeChoice());
     }
 }
