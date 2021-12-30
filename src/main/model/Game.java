@@ -40,7 +40,6 @@ public class Game {
         return player.getScore() >= maxScore;
     }
 
-    // private -> public
     public boolean isTie(RPSEnum p1, RPSEnum p2) {
         return p1 == p2;
     }
@@ -48,6 +47,23 @@ public class Game {
     // MODIFIES: this
     // EFFECTS: computer makes a move, increment score of winner, return winner or null if no one won yet
     public Player play(RPSEnum move) {
-        return new Player("donelsfd");
+        RPSEnum computerMove = computer.makeChoice();
+        if (isTie(move, computerMove)) {
+            return null;
+        } else if (beatsOther(move, computerMove)) {
+            player.increaseScore();
+            if (hasWon(player)) {
+                return player;
+            } else {
+                return null;
+            }
+        } else {
+            computer.increaseScore();
+            if (hasWon(computer)) {
+                return computer;
+            } else {
+                return null;
+            }
+        }
     }
 }
