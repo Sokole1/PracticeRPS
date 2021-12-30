@@ -24,6 +24,7 @@ public class Game {
         return maxScore;
     }
 
+    // EFFECTS: Checks if player beats the computer
     public boolean beatsOther(RPSEnum p, RPSEnum c) {
         if (p == RPSEnum.ROCK && c == RPSEnum.SCISSORS) {
             return true;
@@ -36,6 +37,7 @@ public class Game {
         }
     }
 
+    // hasWon checks if player wins (when player has the max score)
     public boolean hasWon(Player player) {
         return player.getScore() >= maxScore;
     }
