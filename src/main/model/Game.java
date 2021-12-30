@@ -3,12 +3,21 @@ package main.model;
 public class Game {
 
     private int maxScore = 5;
+
     private Player player;
     private Computer computer;
 
     public Game(Player player, Computer computer) {
         this.player = player;
         this.computer = computer;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Computer getComputer() {
+        return computer;
     }
 
     public int getMaxScore() {
@@ -36,7 +45,8 @@ public class Game {
         return p1 == p2;
     }
 
-    // EFFECTS: computer makes a move makeChoice(), checks who wins beatsOther(), else isTie(), increment score of winner computer/player.increaseScore(), return winner or null if no one won yet
+    // MODIFIES: this
+    // EFFECTS: computer makes a move, increment score of winner, return winner or null if no one won yet
     public Player play(RPSEnum move) {
         return new Player("donelsfd");
     }
