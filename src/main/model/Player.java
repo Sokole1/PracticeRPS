@@ -24,4 +24,12 @@ public class Player {
     public void increaseScore() {
         this.score++;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

@@ -51,8 +51,10 @@ public class Game {
     public Player play(RPSEnum move) {
         RPSEnum computerMove = computer.makeChoice();
         if (isTie(move, computerMove)) {
+            System.out.println("TIE: " + move + " " + computerMove);
             return null;
         } else if (beatsOther(move, computerMove)) {
+            System.out.println("PLAYER WON: " + move + " " + computerMove);
             player.increaseScore();
             if (hasWon(player)) {
                 return player;
@@ -60,6 +62,7 @@ public class Game {
                 return null;
             }
         } else {
+            System.out.println("COMPUTER WON: " + move + " " + computerMove);
             computer.increaseScore();
             if (hasWon(computer)) {
                 return computer;
@@ -67,5 +70,14 @@ public class Game {
                 return null;
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "maxScore=" + maxScore +
+                ", player=" + player +
+                ", computer=" + computer +
+                '}';
     }
 }
