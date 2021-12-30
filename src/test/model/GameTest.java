@@ -15,12 +15,13 @@ public class GameTest {
 
     @BeforeEach
     public void runBefore() {
-        game = new Game(new Player("player1"), new Computer("computer", new RPSEnum[]{RPSEnum.ROCK}));
+        player1 = new Player("player1");
+        game = new Game(player1, new Computer("computer", new RPSEnum[]{RPSEnum.ROCK}));
+        player1.setScore(game.getMaxScore() - 1);
     }
 
     @Test
     public void testHasWon() {
-        player1 = new Player("player1");
         player1.increaseScore();
         Assertions.assertTrue(game.hasWon(player1));
 
@@ -54,5 +55,10 @@ public class GameTest {
         Assertions.assertFalse(game.beatsOther(RPSEnum.ROCK, RPSEnum.PAPER));
         Assertions.assertFalse(game.beatsOther(RPSEnum.PAPER, RPSEnum.SCISSORS));
         Assertions.assertFalse(game.beatsOther(RPSEnum.SCISSORS, RPSEnum.ROCK));
+    }
+
+    @Test
+    public void testPlayTie() {
+
     }
 }
