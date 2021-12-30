@@ -20,6 +20,7 @@ public class GameTest {
         player1.setScore(game.getMaxScore() - 1);
     }
 
+
     @Test
     public void testHasWon() {
         player1.increaseScore();
@@ -86,4 +87,5 @@ public class GameTest {
         Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
         Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
     }
+
 }
