@@ -1,5 +1,6 @@
 package test.model;
 
+import main.model.Computer;
 import main.model.Game;
 import main.model.Player;
 import main.model.RPSEnum;
@@ -14,7 +15,7 @@ public class GameTest {
 
     @BeforeEach
     public void runBefore() {
-        game = new Game();
+        game = new Game(new Player("player1"), new Computer("computer", new RPSEnum[]{RPSEnum.ROCK}));
     }
 
     @Test
