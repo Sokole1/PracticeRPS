@@ -59,21 +59,55 @@ public class GameTest {
     }
 
     @Test
+    public void testPlayTie() {
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.ROCK);
+        Assertions.assertNull(winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore, game.getComputer().getScore());
+    }
+
+    @Test
+    public void testPlayComputerWinsGameNotOver() {
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.SCISSORS);
+        Assertions.assertNull(winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
+    }
+
+    @Test
+    public void testPlayComputerWinsGameOver() {
+        game.getComputer().setScore(game.getMaxScore() - 1);
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.SCISSORS);
+        Assertions.assertEquals(game.getComputer(), winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
+    }
+
+    @Test
     public void testPlayWinNotOver() {
+        game.getPlayer().setScore(game.getMaxScore() - 2);
         int initalPlayerScore = game.getPlayer().getScore();
-        int initalComputerScore = game.getPlayer().getScore();
+        int initalComputerScore = game.getComputer().getScore();
+
         Player winner = game.play(RPSEnum.PAPER);
-        Assertions.assertEquals(initalPlayerScore++, game.getPlayer().getScore());
+        Assertions.assertEquals(initalPlayerScore + 1, game.getPlayer().getScore());
         Assertions.assertEquals(initalComputerScore, game.getComputer().getScore());
         Assertions.assertNull(winner);
     }
 
     @Test
     public void testPlayWinOver() {
+        game.getPlayer().setScore(game.getMaxScore() - 1);
         int initalPlayerScore = game.getPlayer().getScore();
-        int initalComputerScore = game.getPlayer().getScore();
+        int initalComputerScore = game.getComputer().getScore();
         Player winner = game.play(RPSEnum.PAPER);
-        Assertions.assertEquals(initalPlayerScore++, game.getPlayer().getScore());
+        Assertions.assertEquals(initalPlayerScore + 1, game.getPlayer().getScore());
         Assertions.assertEquals(initalComputerScore, game.getComputer().getScore());
         Assertions.assertEquals(game.getPlayer(), winner);
     }
