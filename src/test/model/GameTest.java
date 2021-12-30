@@ -67,6 +67,7 @@ public class GameTest {
         Assertions.assertEquals(initalComputerScore, game.getComputer().getScore());
         Assertions.assertNull(winner);
     }
+
     @Test
     public void testPlayWinOver() {
         int initalPlayerScore = game.getPlayer().getScore();
