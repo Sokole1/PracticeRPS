@@ -59,6 +59,31 @@ public class GameTest {
 
     @Test
     public void testPlayTie() {
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.ROCK);
+        Assertions.assertNull(winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore, game.getComputer().getScore());
+    }
 
+    @Test
+    public void testPlayComputerWinsGameNotOver() {
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.SCISSORS);
+        Assertions.assertNull(winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
+    }
+
+    @Test
+    public void testPlayComputerWinsGameOver() {
+        int initialPlayerScore = game.getPlayer().getScore();
+        int initialComputerScore = game.getComputer().getScore();
+        Player winner = game.play(RPSEnum.SCISSORS);
+        Assertions.assertEquals(game.getComputer(), winner);
+        Assertions.assertEquals(initialPlayerScore, game.getPlayer().getScore());
+        Assertions.assertEquals(initialComputerScore + 1, game.getComputer().getScore());
     }
 }
